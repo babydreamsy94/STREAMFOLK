@@ -1,0 +1,36 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+FIRST! STATS - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Displays FIRST! statistics.
+
+SYSTEM FLOW
+Reads the native FIRST! counters, including total wins and streak information.
+
+TRIGGERS / ENTRY POINT
+!fstats
+
+CONFIGURATION
+Enable !fstats when ready. FIRST! reward claims are recorded by FIRST! Tracker.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.firstStats
+
+GLOBALS WRITTEN (PERSISTED)
+None.
+
+SOURCE
+Source Code/08_FIRST_Stats.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

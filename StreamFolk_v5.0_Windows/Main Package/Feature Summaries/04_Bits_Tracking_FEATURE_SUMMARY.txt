@@ -1,0 +1,38 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+BITS TRACKING - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Records Bits per user and the stream total.
+
+SYSTEM FLOW
+Runs from the Twitch Cheer trigger; normalizes usernames and ignores the configured excluded accounts. Attendance from the cheer actor is handled separately by Attendance Tracker.
+
+TRIGGERS / ENTRY POINT
+Twitch Cheer
+
+CONFIGURATION
+Review ExcludedUsers and enable the Twitch Cheer event connection.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.bits
+streamfolk.analytics.totalBits
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.bits
+streamfolk.analytics.totalBits
+
+SOURCE
+Source Code/04_Bits_Tracking.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

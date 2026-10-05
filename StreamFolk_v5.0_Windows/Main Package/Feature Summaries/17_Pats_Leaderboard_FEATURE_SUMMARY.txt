@@ -1,0 +1,38 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+PATS LEADERBOARD - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Displays the Pats leaderboard.
+
+SYSTEM FLOW
+Reads patCounts and patGiven, with the current attendee roster for user resolution.
+
+TRIGGERS / ENTRY POINT
+!pboard
+
+CONFIGURATION
+Enable !pboard after reviewing command cooldowns.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.patCounts
+streamfolk.analytics.patGiven
+streamfolk.analytics.seenUsers
+
+GLOBALS WRITTEN (PERSISTED)
+None.
+
+SOURCE
+Source Code/17_Pats_Leaderboard.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

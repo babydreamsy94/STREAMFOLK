@@ -1,0 +1,37 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+BOT WELCOMER - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Welcomes a recorded attendee when they send their first chat message.
+
+SYSTEM FLOW
+Runs immediately from Attendance Tracker after its First Words event. Reads attendance/history without modifying them, then chooses a new or returning welcome. Quiet presence alone never posts a welcome.
+
+TRIGGERS / ENTRY POINT
+Run Action Immediately from Attendance Tracker; no independent event trigger.
+
+CONFIGURATION
+Keep the linked Run Action step in Attendance Tracker. Do not add a second First Words trigger here. Keep ExcludedUsers aligned with Attendance Tracker. Customize the two welcome messages if desired.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.attendanceHistory
+streamfolk.analytics.seenUsers
+
+GLOBALS WRITTEN (PERSISTED)
+None.
+
+SOURCE
+Source Code/02_Bot_Welcomer.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

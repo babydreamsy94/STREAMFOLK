@@ -1,0 +1,46 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+RESET VARIABLES [DEBUG] - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Manually clears the current-session attendance and event counters.
+
+SYSTEM FLOW
+Resets session attendance, chat, follows, Bits, subscriptions including detailed gift labels, and the raider list. Retains attendanceHistory, archived streams, FIRST!, Hugs/Pats, and the saved final summary.
+
+TRIGGERS / ENTRY POINT
+Manual / bind your own specific reward as described below.
+
+CONFIGURATION
+No public command is included. Use between sessions after preserving any unfinished stream data; it does not repair or merge interrupted summaries.
+
+GLOBALS READ (PERSISTED)
+None.
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.bits
+streamfolk.analytics.chatMessagesByUser
+streamfolk.analytics.chatTotalMessages
+streamfolk.analytics.follows
+streamfolk.analytics.raids
+streamfolk.analytics.seenUsers
+streamfolk.analytics.subs
+streamfolk.analytics.subsDetailed
+streamfolk.analytics.totalBits
+streamfolk.analytics.totalFollows
+streamfolk.analytics.totalSubs
+
+SOURCE
+Source Code/25_Reset_Variables_DEBUG.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

@@ -1,0 +1,39 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+PATS TRACKER - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Records community Pats interactions.
+
+SYSTEM FLOW
+Validates participants against current attendance and updates patCounts and patGiven.
+
+TRIGGERS / ENTRY POINT
+!pat
+
+CONFIGURATION
+Review the response text and enable !pat. Reset Pats clears both counter dictionaries.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.patCounts
+streamfolk.analytics.patGiven
+streamfolk.analytics.seenUsers
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.patCounts
+streamfolk.analytics.patGiven
+
+SOURCE
+Source Code/19_Pats_Tracker.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

@@ -1,0 +1,36 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+RAID TRACKING - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Records raider names for each stream.
+
+SYSTEM FLOW
+Stores the raider list. The raid actor can be added to attendance through Attendance Tracker; a raid count cannot identify or add every person in the raid.
+
+TRIGGERS / ENTRY POINT
+Twitch Raid
+
+CONFIGURATION
+Review ExcludedUsers and keep one active Raid tracker.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.raids
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.raids
+
+SOURCE
+Source Code/20_Raid_Tracking.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

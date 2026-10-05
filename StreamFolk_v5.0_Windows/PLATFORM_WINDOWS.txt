@@ -1,0 +1,17 @@
+STREAMFOLK v5.0 - WINDOWS
+=========================
+Target: Streamer.bot 1.0.7 stable, x64, using .NET Framework 4.8.
+
+Import Main Package/StreamFolk_5.0_Main_Package_Windows.sb.
+Framework references use C:\Windows\Microsoft.NET\Framework64\v4.0.30319.
+Newtonsoft.Json is referenced from the Streamer.bot folder as .\Newtonsoft.Json.dll.
+Attendance Tracker also references System.Net.Http.dll. Networking namespaces
+such as System.Net.Mail are supplied by System.dll; do not add System.Net.dll.
+
+Open/compile each Execute C# sub-action after import. If Windows is installed
+elsewhere, use Find Refs to locate that machine's actual framework assemblies.
+The package does not bundle third-party runtime DLLs.
+
+Reports use Environment.SpecialFolder.MyDocuments and a StreamSummaries folder;
+they contain no creator-specific Windows path. Review folder write permissions.
+Native import/live integration checks must be completed on your installation.

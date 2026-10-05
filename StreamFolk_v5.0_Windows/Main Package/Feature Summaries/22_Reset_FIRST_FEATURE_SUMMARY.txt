@@ -1,0 +1,37 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+RESET FIRST! - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Clears all FIRST! totals, streaks, winners, and dates.
+
+SYSTEM FLOW
+Checks the connected broadcaster and resets the two stores using the same native dictionary types as their readers.
+
+TRIGGERS / ENTRY POINT
+!resetfirst
+
+CONFIGURATION
+Enable !resetfirst only when needed. This is a full FIRST! history reset.
+
+GLOBALS READ (PERSISTED)
+None.
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.firstDates
+streamfolk.analytics.firstStats
+
+SOURCE
+Source Code/22_Reset_FIRST.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

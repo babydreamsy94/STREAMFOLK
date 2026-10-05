@@ -1,0 +1,37 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+TRACK STREAM CATEGORY - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Tracks the current stream category and title.
+
+SYSTEM FLOW
+Runs on Stream Online and Channel Updated. Those globals feed stream summaries and the archived records used by period reports.
+
+TRIGGERS / ENTRY POINT
+Twitch Stream Online, Twitch Channel Updated
+
+CONFIGURATION
+Keep both supplied triggers. The final JSON uses StreamCategory; archive records retain Category. No GUI schema rename is required.
+
+GLOBALS READ (PERSISTED)
+None.
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.currentCategory
+streamfolk.analytics.currentStreamTitle
+
+SOURCE
+Source Code/32_Track_Stream_Category.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

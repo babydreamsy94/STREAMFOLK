@@ -1,0 +1,42 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+GENERATE MONTHLY REPORT - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Generates a monthly report from archived completed streams.
+
+SYSTEM FLOW
+Uses the selected calendar month; defaults to the current local month. Retention compares unique attendee rosters with the previous month. Supports the older history structure under the new namespaced key.
+
+TRIGGERS / ENTRY POINT
+!mreport
+
+CONFIGURATION
+Use !mreport, !mreport previous, or !mreport 2026-10. Enable the command only for the broadcaster/trusted moderators. Files are saved under Documents/StreamSummaries/Monthly Reports.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.monthlyHistory
+streamfolk.analytics.streamHistory
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.latestMonthlyReport
+streamfolk.analytics.latestMonthlyReportEnd
+streamfolk.analytics.latestMonthlyReportMonth
+streamfolk.analytics.latestMonthlyReportPath
+streamfolk.analytics.latestMonthlyReportStart
+streamfolk.analytics.streamHistory
+
+SOURCE
+Source Code/11_Generate_Monthly_Report.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

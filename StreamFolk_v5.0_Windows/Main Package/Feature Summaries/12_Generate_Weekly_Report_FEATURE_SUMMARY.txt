@@ -1,0 +1,41 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+GENERATE WEEKLY REPORT - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Generates a Monday-through-Sunday weekly report.
+
+SYSTEM FLOW
+Defaults to the week containing the newest archived stream. A supplied date selects that date's Monday-through-Sunday week. Retention uses attendee overlap with the previous week.
+
+TRIGGERS / ENTRY POINT
+!wreport
+
+CONFIGURATION
+Use !wreport or !wreport 2026-10-05. Enable the command only for the broadcaster/trusted moderators. Files are saved under Documents/StreamSummaries/Weekly Reports.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.monthlyHistory
+streamfolk.analytics.streamHistory
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.latestWeeklyReport
+streamfolk.analytics.latestWeeklyReportEnd
+streamfolk.analytics.latestWeeklyReportPath
+streamfolk.analytics.latestWeeklyReportStart
+streamfolk.analytics.streamHistory
+
+SOURCE
+Source Code/12_Generate_Weekly_Report.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

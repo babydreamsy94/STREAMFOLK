@@ -1,0 +1,36 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+RESET ATTENDANCE - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Clears the current-session attendee roster.
+
+SYSTEM FLOW
+Only the connected Twitch broadcaster may invoke the command. Attendance history is retained; this is not a long-term history reset.
+
+TRIGGERS / ENTRY POINT
+!resetattendance
+
+CONFIGURATION
+Enable !resetattendance only when needed. This command affects the next session summary if run during a stream.
+
+GLOBALS READ (PERSISTED)
+None.
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.seenUsers
+
+SOURCE
+Source Code/21_Reset_Attendance.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.
