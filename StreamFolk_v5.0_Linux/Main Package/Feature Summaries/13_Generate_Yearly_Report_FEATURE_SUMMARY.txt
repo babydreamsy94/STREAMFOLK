@@ -1,0 +1,42 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+GENERATE YEARLY REPORT - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Generates a yearly report from archived completed streams.
+
+SYSTEM FLOW
+Defaults to the current local calendar year. Accepts current, previous, a year, or a date. Retention compares unique rosters with the previous year.
+
+TRIGGERS / ENTRY POINT
+!yreport
+
+CONFIGURATION
+Use !yreport, !yreport previous, or !yreport 2026. Enable only for the broadcaster/trusted moderators. Files are saved under Documents/StreamSummaries/Yearly Reports.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.monthlyHistory
+streamfolk.analytics.streamHistory
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.latestYearlyReport
+streamfolk.analytics.latestYearlyReportEnd
+streamfolk.analytics.latestYearlyReportPath
+streamfolk.analytics.latestYearlyReportStart
+streamfolk.analytics.latestYearlyReportYear
+streamfolk.analytics.streamHistory
+
+SOURCE
+Source Code/13_Generate_Yearly_Report.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

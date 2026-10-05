@@ -1,0 +1,38 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+FOLLOW TRACKING - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Records follows by user and stream total.
+
+SYSTEM FLOW
+Runs from Twitch Follow, ignores configured exclusions, and stores follow activity. Its attendance signal goes through Attendance Tracker while live.
+
+TRIGGERS / ENTRY POINT
+Twitch Follow
+
+CONFIGURATION
+Review ExcludedUsers and keep one active Follow tracker.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.follows
+streamfolk.analytics.totalFollows
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.follows
+streamfolk.analytics.totalFollows
+
+SOURCE
+Source Code/10_Follow_Tracking.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

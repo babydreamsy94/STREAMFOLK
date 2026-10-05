@@ -1,0 +1,36 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+RESET HUGS - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Clears the persistent Hugs statistics.
+
+SYSTEM FLOW
+Checks the connected broadcaster before resetting hugStats.
+
+TRIGGERS / ENTRY POINT
+!resethugs
+
+CONFIGURATION
+Enable !resethugs only when needed. This clears the complete Hugs history, not only the current stream.
+
+GLOBALS READ (PERSISTED)
+None.
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.hugStats
+
+SOURCE
+Source Code/23_Reset_Hugs.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

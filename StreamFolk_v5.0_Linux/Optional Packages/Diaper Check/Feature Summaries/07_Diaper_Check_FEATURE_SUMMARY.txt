@@ -1,0 +1,36 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+DIAPER CHECK - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Provides the optional !check community interaction.
+
+SYSTEM FLOW
+Uses the main package attendance roster to validate interaction targets. This action is independent of analytics and is distributed separately.
+
+TRIGGERS / ENTRY POINT
+Optional !check command (disabled until configured).
+
+CONFIGURATION
+Import only for a consenting adult community where the theme fits. Enable its action and !check command after reviewing the response text. The main package is required.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.seenUsers
+
+GLOBALS WRITTEN (PERSISTED)
+None.
+
+SOURCE
+Source Code/07_Diaper_Check.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

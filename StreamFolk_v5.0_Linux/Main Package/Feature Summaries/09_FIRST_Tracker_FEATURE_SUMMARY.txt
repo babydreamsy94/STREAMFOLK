@@ -1,0 +1,38 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+FIRST! TRACKER - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Records the FIRST! winner and streak history.
+
+SYSTEM FLOW
+Maintains winner/date entries inside firstDates and totals/streak counters inside firstStats. The existing milestone behavior, including the 173 milestone and its reset behavior, is retained.
+
+TRIGGERS / ENTRY POINT
+Manual / bind your own specific reward as described below.
+
+CONFIGURATION
+Create a FIRST! reward and bind it specifically to this action. Keep FIRST! Stats and Reset FIRST! on the supplied blocking rewards queue.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.firstDates
+streamfolk.analytics.firstStats
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.firstDates
+streamfolk.analytics.firstStats
+
+SOURCE
+Source Code/09_FIRST_Tracker.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

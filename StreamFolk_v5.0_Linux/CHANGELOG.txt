@@ -1,0 +1,501 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+STREAMFOLK CHANGELOG
+====================
+
+StreamFolk was formerly released under the name Stream Suite.
+This changelog preserves the complete public release history while documenting
+all changes introduced with the StreamFolk v4.1 rebrand.
+
+Private credentials, personal identifiers, channel-specific reward IDs, contact
+information, and other sensitive values from historical creator files are
+intentionally excluded.
+
+
+RELEASE SUMMARY
+===============
+
+Version 1.0
+- 24 actions
+- 14 commands
+- Initial attendance, analytics, community commands, reporting, and reset suite
+
+Version 2.0
+- 25 actions
+- 14 commands
+- Added Diaper Check and simplified multiple modules
+
+Version 3.0
+- 25 actions
+- 14 commands
+- Major reliability, template, documentation, privacy, and event-handling overhaul
+
+Version 4.0 FINAL
+- 28 Main Package actions + 1 optional action
+- 16 Main Package commands + 1 optional command
+- True retention, expanded reports, safer templates, readable source, and
+  Streamer.bot v1.0.7 compatibility
+
+Version 4.1
+- 28 Main Package actions + 1 optional action
+- 16 Main Package commands + 1 optional command
+- StreamFolk rebrand, Windows/Linux release split, GUI integration updates,
+  Stream Category support in final reports, and Linux/Wine compatibility work
+
+
+Version 5.0
+- 30 Main Package actions + 1 optional action
+- 16 Main Package commands + 1 optional command
+- Complete streamfolk.analytics namespace migration, Present Viewers and support
+  attendance, a separate Bot Welcomer, gifter details, eight Stream Deck stats,
+  connected-broadcaster configuration, and manual history-preserving upgrade tools
+
+
+======================================================================
+VERSION 5.0 - STREAMFOLK
+October 5, 2026
+======================================================================
+
+ADDED
+-----
+- Added Present Viewers as an attendance signal alongside First Words and the
+  optional Attendance Check reward.
+- Added live support-event attendance for follows, cheers, subscriptions,
+  resubscriptions, gift subscriptions, gift bombs, and raids. Gifted-subscription
+  attendance counts the gifter, not the recipient solely for receiving a gift.
+- Added a separate Bot Welcomer that greets recorded attendees on First Words.
+- Added gifter names to detailed gifted-subscription entries and stream reports.
+- Added eight optional Stream Deck statistics: attendees, returning, new,
+  retention, chat messages, messages per minute, stream duration, and Bits.
+- Added a separate manual namespace-migration utility with PREVIEW and COPY
+  actions, conflict checks, type preservation, and a complete 44-variable mapping.
+
+CHANGED
+-------
+- Updated the public package version to 5.0.0.
+- Moved every operational StreamFolk global to streamfolk.analytics.*, including
+  attendance/history, analytics, reports, FIRST!, Hugs, Pats, resets, Stream Deck,
+  and the optional text-message cooldown.
+- Updated all operational reads, writes, and reset dependencies to use the same
+  names. Old names remain only in the mapping and manual migration utility.
+- Changed broadcaster-dependent Start, End, and reset actions to use the connected
+  Twitch broadcaster account instead of a hard-coded creator login.
+- Changed Start/End chat-mode management to an explicit ManageChatModes option
+  that defaults off in the public build.
+- Added the Stream Deck action and disabled three-second timer to the public main
+  package; unconfigured button IDs are skipped while the local snapshot updates.
+- Serialized shared analytics work through a blocking analytics queue and kept
+  FIRST! work together on its blocking rewards queue.
+- Expanded the Main Package to 30 actions and 31 readable C# modules with matching
+  Feature Summaries. The 16 Main Package commands and separate Diaper Check remain.
+- Updated the README, setup guides, platform notes, feature summaries, and release
+  notes for the actual v5.0 files, namespace, defaults, and upgrade procedure.
+
+FIXED AND HARDENED
+------------------
+- Removed the redundant independent Bot Welcomer First Words trigger. Attendance
+  is recorded first, then its single linked welcome action runs immediately.
+- Connected the existing support-attendance handlers to their event triggers.
+- Preserved gifter attribution while avoiding gift-bomb child-event double counts.
+- Corrected FIRST! reset storage to match its readers' native dictionary types.
+- Completed required framework references and removed the unused System.Text.Json
+  and invalid System.Net.dll references from the imports.
+
+REPORTING / GUI / UPGRADES
+--------------------------
+- Preserved the working migrated build's report property names, types, and order;
+  the namespace change does not require file-based GUI field renaming.
+- Direct-global GUI/overlay consumers must use the new variable mapping.
+- The copying utility preserves existing values and their types, handles persisted
+  and temporary stores separately, keeps the old keys, skips equal destinations,
+  and stops before copying when destination values conflict.
+- Fresh installations and already-migrated installations skip the copying utility.
+
+STABLE COMPATIBILITY AND VALIDATION
+-----------------------------------
+- Continues to target Streamer.bot 1.0.7 stable. Both minimum-version gates are
+  explicitly 1.0.7, using schema 24; no alpha or beta is required.
+- Keeps separate Windows and Linux/Wine imports. Linux remains experimental
+  according to Streamer.bot's own platform guidance.
+- All 32 operational modules plus the copy utility passed .NET Framework 4.8
+  reference-assembly compilation with documented CPH test doubles.
+- Passed 1,432 simulated checks. Native Streamer.bot import/compile and live
+  integration testing remain local acceptance steps; see VERIFICATION_REPORT.md.
+
+
+======================================================================
+VERSION 4.1 - STREAMFOLK
+September 1, 2026
+======================================================================
+
+ADDED
+-----
+- Added separate Windows and Linux/Wine StreamFolk release variants.
+- Added Stream Category to the final stream-summary data generated by Stream End
+  Protocols.
+- Added `Category` to `analytics.finalSummaryJson`.
+- Added the stream category to the saved Stream Performance Report immediately
+  after Duration using the GUI-compatible format:
+
+    🎮 Category: Pokémon Unbound
+
+- Added compatibility handling so completed-stream archiving prefers the
+  finalized Category value from `analytics.finalSummaryJson` while retaining a
+  fallback to `analytics.currentCategory` for older data.
+- Added platform-specific Linux/Wine setup guidance and launch support for the
+  StreamFolk GUI.
+- Added a Linux GUI launch helper that can use a compatible native Godot runtime
+  where appropriate or fall back to Wine.
+
+CHANGED
+-------
+- Rebranded the project from Stream Suite to StreamFolk.
+- Changed the Streamer.bot import title to **STREAMFOLK**.
+- Updated the public version to **4.1.0**.
+- Rebranded action names, action groups, descriptions, Feature Summaries,
+  readable C# source, embedded C# source, report footers, GUI-visible strings,
+  package filenames, documentation, and distribution folders.
+- Renamed Stream Suite-branded package resources to StreamFolk equivalents.
+- Updated the GUI package so StreamFolk branding is displayed throughout the
+  application.
+- Preserved the existing 28-action Main Package, 16 Main Package commands,
+  blocking action queue, readable-source layout, Feature Summaries, and optional
+  package structure from v4.0 FINAL.
+- Restored the large STREAMFOLK ASCII banner at the top of every Feature Summary.
+
+LINUX / WINE COMPATIBILITY
+--------------------------
+- Reworked C# framework reference paths in the Linux Streamer.bot import so they
+  target the Wine C: environment rather than relying on Windows-machine-relative
+  framework paths.
+- Kept the Windows release on the standard Streamer.bot/.NET reference model.
+- Separated the Windows and Linux imports so platform-specific compatibility work
+  does not alter the Windows package unnecessarily.
+- Documented that Streamer.bot Linux operation remains dependent on Wine and may
+  behave differently from the native Windows environment.
+
+REPORTING / GUI INTEGRATION
+---------------------------
+- Updated Stream End Protocols so generated Stream Performance Reports expose the
+  current category in a stable, GUI-readable location.
+- Preserved the existing report order for Event Date, Report Generated, Duration,
+  Audience Overview, Engagement Overview, Support Overview, and Attendee Roster.
+- Updated completed-stream history so category-aware weekly, monthly, yearly, and
+  GUI workflows can continue using the finalized stream record.
+
+REBRAND COMPATIBILITY
+---------------------
+- Existing analytics global-variable names remain unchanged unless a functional
+  change required otherwise. This avoids breaking historical analytics data.
+- The rebrand changes the product identity, presentation, filenames, and public
+  package naming without intentionally resetting long-term viewer/community data.
+- Historical changelog entries below retain the name Stream Suite where useful to
+  accurately identify the branding under which those versions were released.
+
+
+======================================================================
+VERSION 4.0 FINAL - STREAM SUITE
+======================================================================
+
+ADDED
+-----
+- Added dedicated weekly, monthly, and yearly report generators with separate
+  disabled commands and locally saved text reports.
+- Added true attendee-overlap retention to stream, weekly, monthly, and yearly
+  analytics. Retention compares the actual people from one period with the people
+  who returned during the next period.
+- Added `analytics.streamHistory` as the shared long-term archive used by the
+  report generators.
+- Added a completed-stream archive script inside Stream End Protocols so each
+  finished stream can supply the long-term reporting system.
+- Added migration support for older `analytics.monthlyHistory` records while
+  preserving the original variable.
+- Added matching Feature Summary files for every included readable C# script.
+- Added detailed setup, customization, privacy, security, and troubleshooting
+  guidance for Send Streamer a Text and Stream End Protocols.
+- Added a separate optional-package folder for Diaper Check so the Main Package
+  remains suitable for channels that do not want the ABDL-themed command.
+- Added a public Quick Start Guide explaining Stream Suite's purpose, limits,
+  installation, commands, triggers, and relationship with Twitch analytics.
+
+CHANGED
+-------
+- Split the release into a 28-action Main Package and a separate one-action
+  Diaper Check add-on.
+- Increased the Main Package to 16 commands by including weekly, monthly, and
+  yearly report commands alongside the existing community and reset commands.
+- Changed the import title to **STREAM SUITE**, the author to **babydreamsy**, and
+  the public description to the final Stream Suite release description.
+- Regenerated public action, command, trigger, sub-action, and queue identifiers
+  so the release is independent of the creator's personal installation.
+- Renamed imported actions and groups for clean public-package presentation.
+- Standardized every imported action tree with a green purpose note, a light-blue
+  Feature Summary reminder, and a clearly named code folder containing the red
+  editing warning and C# sub-action.
+- Removed creator-specific reward IDs, contact details, credentials, usernames,
+  private paths, Stream Deck bindings, and other channel-specific values.
+- Removed Stream Deck Stats from the public Main Package because it was not part
+  of the requested core release.
+- Removed redundant `Trigger:` and `References:` labels from readable C# files.
+- Removed repeated introductory descriptions from weekly, monthly, and yearly
+  report code because the Feature Summaries provide the full documentation.
+- Disabled all imported command resources by default so streamers can review
+  permissions and cooldowns before enabling them.
+- Kept Stream Start Protocols, Stream End Protocols, Send Streamer a Text, and the
+  optional Diaper Check action disabled until their private configuration is
+  reviewed.
+- Standardized the public report footer around the tagline:
+  **Built By Streamers. Powered by Community.**
+
+FIXED AND HARDENED
+------------------
+- Corrected the public `.sb` files to use the complete Streamer.bot v1.0.7 export
+  envelope and schema 24.
+- Restored the blocking Channel Point Redemptions queue required by FIRST! Tracker
+  and Send Streamer a Text, then repaired both queue references.
+- Corrected Stream Start Protocols for the v1.0.7 pinned-message API by passing
+  `null` to `TwitchUpdatePinnedMessageDuration`, keeping the message pinned until
+  stream end.
+- Fixed Reset Pats so it clears `PatCounts` and `PatGiven`, the variables used by
+  the active pat modules.
+- Updated Reset Variables to clear current-session subscription detail and
+  attendance-summary data while preserving long-term attendance history.
+- Hardened weekly, monthly, and yearly report loading, date selection, legacy
+  migration, comparison periods, and failed-save behavior.
+- Kept readable C# files synchronized with the code embedded inside both
+  Streamer.bot imports.
+- Preserved command, parent, and queue references after public ID regeneration.
+
+SECURITY AND PRIVACY
+--------------------
+- Removed all real sender addresses, phone gateways, app passwords, private report
+  paths, reward IDs, and personal channel values from the public package.
+- Disabled email-to-SMS delivery by default and added explicit placeholder checks
+  before any message can be sent.
+- Added data-theft warnings for actions that can contain credentials, contact
+  information, viewer histories, or generated analytics reports.
+- Documented email-to-SMS limitations, carrier support concerns, Google App
+  Password setup, safer account separation, and credential-revocation steps.
+- Kept destructive reset commands disabled and documented their broadcaster-only
+  permission requirements.
+- Preserved long-term attendance and stream-history data when resetting only the
+  current session.
+
+PACKAGE LAYOUT
+--------------
+- Main Package: 28 actions, 16 disabled commands, one blocking action queue,
+  29 readable C# files, and 29 matching Feature Summaries.
+- Optional Diaper Check: one disabled action, one disabled command, one readable
+  C# file, and one matching Feature Summary.
+- Stream End Protocols contains two readable C# modules: the main end-of-stream
+  workflow and the completed-stream archive.
+
+KNOWN LIMITATIONS RETAINED AND DOCUMENTED
+----------------------------------------
+- Attendance is event-based, not a live viewer count. Silent viewers who never
+  activate a supported trigger may not be recorded.
+- Channel Point Reward IDs belong to individual Twitch channels and must be
+  created or reconnected after import.
+- Imported commands are disabled by default and require a manual permission
+  review.
+- Email-to-SMS support depends on the carrier and may be delayed, filtered,
+  changed, or unavailable.
+- Generated attendance histories and reports can reveal viewing patterns and
+  should be stored and shared carefully.
+- Stream Suite does not replace Twitch for official revenue, payout,
+  advertisement, tax, or platform-controlled information.
+
+MODULE-LEVEL CHANGES
+--------------------
+- Attendance Check: Preserved automatic First Words attendance while removing the
+  creator's private reward binding for destination-channel setup.
+- BITE / BONK!: Kept attendance gating, target handling, randomized responses,
+  and safe missing-argument behavior.
+- Bits / Chat / Follow / Raid: Preserved excluded-account filtering, fallback
+  username handling, duplicate protection, and per-stream totals.
+- FIRST!: Preserved winner locking, totals, streaks, milestones, the 173 reset,
+  and the blocking redemption queue.
+- Hugs / Pats: Kept trackers, stats, leaderboards, attendance eligibility, and
+  corrected reset-variable alignment.
+- Report Generators: Added weekly, monthly, and yearly reporting with exact
+  attendee-overlap retention and comparison periods.
+- Stream Start: Resets current analytics, stores the local session clock, unlocks
+  chat, and uses the v1.0.7 pinned-message API.
+- Stream End: Produces the final summary, stores current attendance analytics,
+  saves the local report, optionally sends an SMS summary, clears current
+  attendance, and runs the stream-history archive.
+- Subscription Tracking: Preserved standard subscriptions, Prime,
+  resubscriptions, individual gifts, gift bombs, tiers, months, and detailed
+  labels.
+- Reset Utilities: Corrected current-session reset coverage while protecting
+  long-term attendance and reporting history.
+- Send Streamer a Text: Retained optional email-to-SMS and sound support with
+  disabled defaults, placeholders, and expanded security guidance.
+- Diaper Check: Remained fully optional, separate from the Main Package, and
+  disabled by default.
+
+
+======================================================================
+VERSION 3.0 - STREAM SUITE
+======================================================================
+
+ADDED
+-----
+- Added comprehensive matching documentation headers for every C# script,
+  including Purpose, System Flow, Variable Reference, User Customization, and
+  Troubleshooting.
+- Added Conditional Data Safety documentation for modules that handle contact
+  credentials, private paths, or generated viewer reports.
+- Added a public-template identity model using `streamername`, `botname`, and
+  common service-account placeholders.
+- Added First Words attendance support so a viewer could be recorded through first
+  chat participation as well as the Attendance Check reward.
+- Added duplicate Attendance Check redemption cancellation when `rewardId` and
+  `redemptionId` are available.
+- Added a consolidated Reset Variables utility for clearing current-session
+  attendance and analytics without deleting long-term attendance history.
+- Added detailed subscription routing for standard subscriptions, Prime,
+  resubscriptions, individual gifts, and gift bombs.
+- Added null-argument guards, fallback username keys, additional logging, and
+  safer JSON handling across core analytics modules.
+- Added non-Affiliate support by moving selected reward-only workflows to
+  commands.
+
+CHANGED
+-------
+- Renamed the imported group and actions for public template use and removed
+  personalized channel identities.
+- Replaced historical phone, email, password, channel-name, and local-path values
+  with explicit placeholders.
+- Changed session timing from `analytics.sessionStartUtc` to
+  `analytics.sessionStartLocal` so Stream Start and Stream End use the same clock.
+- Changed attendance date checks from direct string matching to parsed calendar
+  dates.
+- Restored and standardized bot and service-account filtering across analytics
+  and reporting workflows.
+- Refactored community commands for consistent normalization, attendance gating,
+  response pools, and error handling.
+- Updated Stream Start to reset `analytics.subsDetailed` and all current-session
+  analytics before a new broadcast.
+
+FIXED AND HARDENED
+------------------
+- Prevented null `args` dictionaries and missing username fields from crashing
+  core trackers.
+- Reduced duplicate attendance records and repeated same-session welcome messages.
+- Separated subscription-unit totals from per-user activity records and avoided
+  double-counting gift-bomb announcements.
+- Added Resub and Prime labeling, tier normalization, month fallbacks, and
+  anonymous gift handling.
+- Made loaded username dictionaries case-insensitive to reduce split statistics
+  caused by capitalization differences.
+- Added stronger error reporting and private-data guidance to analytics and
+  reporting workflows.
+
+
+======================================================================
+VERSION 2.0 - STREAM SUITE
+======================================================================
+
+ADDED
+-----
+- Added the Diaper Check interaction module and the `!check` command with a
+  per-user cooldown.
+- Expanded in-code feature descriptions across many actions.
+- Added an explicit `analytics.totalRaids` counter to the raid and session-summary
+  flow.
+
+CHANGED FROM VERSION 1.0
+------------------------
+- Increased the action count from 24 to 25 while keeping 14 exported commands.
+- Removed the `!checkin` command trigger from Attendance Check, leaving the
+  channel-point reward as its only exported trigger.
+- Refactored multiple trackers into shorter implementations with simpler JSON
+  helpers.
+- Simplified subscription tracking to a generic counter and removed detailed type
+  labels from active use.
+- Simplified Stream End Protocols to read explicit numeric totals.
+- Expanded FIRST! milestone and rejection wording while preserving winner locking
+  and streak logic.
+- Expanded reset-action permission checks and user-facing confirmations.
+
+REGRESSIONS LATER ADDRESSED
+---------------------------
+- Excluded-user filtering was absent from several simplified analytics trackers.
+- Single-key username assumptions made trackers sensitive to event-payload
+  differences.
+- Subscription tracking did not distinguish Prime, resubs, gifts, gift bombs, or
+  detailed tiers.
+- Attendance remained reward-only and did not refund duplicate redemptions.
+- Personal identities and credentials were still embedded in the historical
+  export.
+
+
+======================================================================
+VERSION 1.0 - STREAM SUITE
+======================================================================
+
+INITIAL RELEASE
+---------------
+- Introduced the Stream Suite action group with 24 actions, 14 commands, and a
+  blocking Channel Point Redemptions queue.
+- Added attendance check-in through a channel-point reward and the original
+  `!checkin` command.
+- Created `SeenUsers` for current-session attendance and `AttendanceHistory` for
+  long-term date history.
+- Added per-user and total tracking for chat messages, cheers, follows, raids, and
+  subscriptions.
+- Added Stream Start and Stream End protocols for session setup, analytics,
+  reports, optional SMTP delivery, and current-attendance cleanup.
+- Added FIRST! winner, total, streak, milestone, stats, and reset modules.
+- Added attendance-gated BITE, BONK!, hug, and pat interactions with stats and
+  leaderboards.
+- Added broadcaster-only attendance, FIRST!, hug, and pat reset commands.
+- Added a private channel-point action for sending the streamer an email-to-SMS
+  message and playing a confirmation sound.
+
+ORIGINAL DESIGN CHARACTERISTICS
+-------------------------------
+- Used persistent Streamer.bot global variables as the shared data layer between
+  independent actions.
+- Used normalized lowercase usernames and case-insensitive dictionaries in many
+  modules.
+- Combined live automation, community interaction, session analytics, long-term
+  attendance, and post-stream reporting in one export.
+- Contained channel-specific names, reward IDs, credentials, carrier details, and
+  local paths that required sanitization before public sharing.
+
+
+======================================================================
+UPGRADE NOTES FOR STREAMFOLK v4.1
+======================================================================
+
+- Back up Streamer.bot and export any existing Stream Suite or StreamFolk actions
+  before importing v4.1.
+- Do not overwrite `AttendanceHistory`, `analytics.streamHistory`,
+  `analytics.monthlyHistory`, `FirstStats`, `FirstDates`, `HugStats`, `PatCounts`,
+  or `PatGiven` unless a full reset is intended.
+- Reconnect Channel Point Rewards after import because reward IDs are unique to
+  each Twitch channel.
+- Review every imported command, permission, cooldown, action state, and
+  placeholder before enabling anything.
+- Keep shared global-variable names synchronized when customizing scripts.
+- Test Stream Start, trackers, reports, GUI parsing, and Stream End in a duplicated
+  or controlled Streamer.bot setup before using the package during a live stream.
+- Linux users should test every C# action under their specific Wine/Streamer.bot
+  environment because Linux support may vary between distributions and Wine
+  configurations.
+
+
+======================================================================
+PROJECT IDENTITY
+======================================================================
+
+Current Name: StreamFolk
+Former Name: Stream Suite
+Creator: Dreamsy / babydreamsy
+Tagline: Built by Streamers. Powered by Community.

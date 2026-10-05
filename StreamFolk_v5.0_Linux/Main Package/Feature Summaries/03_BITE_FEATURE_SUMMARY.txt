@@ -1,0 +1,36 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+BITE - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Provides an attendance-aware !bite interaction.
+
+SYSTEM FLOW
+Uses the current attendee roster when resolving interaction targets and chooses a response from the supplied phrases.
+
+TRIGGERS / ENTRY POINT
+!bite
+
+CONFIGURATION
+Review the phrases and enable !bite when ready. The relevant people must be recorded in the current attendance list.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.seenUsers
+
+GLOBALS WRITTEN (PERSISTED)
+None.
+
+SOURCE
+Source Code/03_BITE.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

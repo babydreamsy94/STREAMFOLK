@@ -1,0 +1,38 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+PATS STATS - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Displays Pats statistics for the requested user.
+
+SYSTEM FLOW
+Reads both received and given Pats counters.
+
+TRIGGERS / ENTRY POINT
+!pstats
+
+CONFIGURATION
+Enable !pstats after reviewing the command settings.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.patCounts
+streamfolk.analytics.patGiven
+streamfolk.analytics.seenUsers
+
+GLOBALS WRITTEN (PERSISTED)
+None.
+
+SOURCE
+Source Code/18_Pats_Stats.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

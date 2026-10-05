@@ -1,0 +1,38 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+RESET PATS - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Clears the persistent Pats statistics.
+
+SYSTEM FLOW
+Checks the connected broadcaster, then clears patCounts, patGiven, and the old reset-only patStats slot.
+
+TRIGGERS / ENTRY POINT
+!resetpats
+
+CONFIGURATION
+Enable !resetpats only when needed. This clears the complete Pats history.
+
+GLOBALS READ (PERSISTED)
+None.
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.patCounts
+streamfolk.analytics.patGiven
+streamfolk.analytics.patStats
+
+SOURCE
+Source Code/24_Reset_Pats.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

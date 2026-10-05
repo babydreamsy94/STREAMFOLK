@@ -1,0 +1,42 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+STREAM END PROTOCOLS - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Archives the completed final summary for weekly/monthly/yearly reports.
+
+SYSTEM FLOW
+The second C# sub-action in Stream End Protocols. Uses the final summary and category/title globals, preserves roster information, and avoids duplicating the same completed stream.
+
+TRIGGERS / ENTRY POINT
+Second C# module inside Stream End Protocols, after the summary module.
+
+CONFIGURATION
+Keep this module after the final-summary module. Do not run it before a final summary exists. It has no separate Twitch trigger.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.currentCategory
+streamfolk.analytics.currentStreamTitle
+streamfolk.analytics.finalSummaryJson
+streamfolk.analytics.monthlyHistory
+streamfolk.analytics.sessionStartLocal
+streamfolk.analytics.streamHistory
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.lastStreamArchiveJson
+streamfolk.analytics.streamHistory
+
+SOURCE
+Source Code/29_Archive_Completed_Stream.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

@@ -1,0 +1,38 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+CHAT MESSAGE TRACKING - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Counts chat messages by user and in total.
+
+SYSTEM FLOW
+Runs once per Twitch Chat Message. Unique chatters are calculated from message senders, independently of the attendance roster.
+
+TRIGGERS / ENTRY POINT
+Twitch Chat Message
+
+CONFIGURATION
+Keep one active Chat Message tracker. Review ExcludedUsers and replace botname consistently across tracker/report scripts.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.chatMessagesByUser
+streamfolk.analytics.chatTotalMessages
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.chatMessagesByUser
+streamfolk.analytics.chatTotalMessages
+
+SOURCE
+Source Code/06_Chat_Message_Tracking.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

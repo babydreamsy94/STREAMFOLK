@@ -1,0 +1,38 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+ATTENDANCE TRACKER - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Records cumulative, identifiable attendance through Present Viewers, First Words, the optional Attendance Check reward, and supported community events.
+
+SYSTEM FLOW
+One entry per login per session; history retains attendance dates. Support events count the actor, including the gifter, never the recipient solely for receiving a gift. Anonymous support is skipped. Present Viewers and support attendance require live status; support status uses Twitch Helix. A duplicate Attendance Check redemption is canceled when valid reward/redemption IDs are available.
+
+TRIGGERS / ENTRY POINT
+Twitch Present Viewers, Twitch First Words, Twitch Cheer, Twitch Follow, Twitch Raid, Twitch Subscription, Twitch Resubscription, Twitch Gift Subscription, Twitch Gift Bomb
+
+CONFIGURATION
+Enable Present Viewers Live Update in Twitch settings. If desired, bind only your Attendance Check reward to this action. Review ExcludedUsers; replace botname with your bot login. This action excludes the connected broadcaster and bot automatically when ingesting attendance events.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.attendanceHistory
+streamfolk.analytics.seenUsers
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.attendanceHistory
+streamfolk.analytics.seenUsers
+
+SOURCE
+Source Code/01_Attendance_Tracker.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

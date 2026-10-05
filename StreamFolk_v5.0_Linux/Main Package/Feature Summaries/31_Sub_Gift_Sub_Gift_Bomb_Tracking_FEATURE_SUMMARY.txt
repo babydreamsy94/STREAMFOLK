@@ -1,0 +1,40 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+SUB/GIFT SUB/GIFT BOMB TRACKING - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Tracks subscriptions, resubscriptions, gift subscriptions, and gift bombs.
+
+SYSTEM FLOW
+Stores per-user counts and detailed labels including gifter names. Retains Prime/tier/month detail and gift-bomb child-event deduplication. Gift recipient entries in subscription reporting do not themselves imply attendance.
+
+TRIGGERS / ENTRY POINT
+Twitch Subscription, Twitch Resubscription, Twitch Gift Subscription, Twitch Gift Bomb
+
+CONFIGURATION
+Keep all four subscription triggers connected to this tracker. Attendance Tracker separately receives the corresponding support events and counts only eligible actors.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.subs
+streamfolk.analytics.subsDetailed
+streamfolk.analytics.totalSubs
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.subs
+streamfolk.analytics.subsDetailed
+streamfolk.analytics.totalSubs
+
+SOURCE
+Source Code/31_Sub_Gift_Sub_Gift_Bomb_Tracking.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

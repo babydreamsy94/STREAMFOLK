@@ -1,0 +1,25 @@
+STREAMFOLK v5.0 - LINUX / WINE
+==============================
+This is the Windows Streamer.bot 1.0.7 STABLE application running through Wine.
+Streamer.bot documents Linux support as experimental and not officially supported.
+No alpha/beta build is required by this package.
+
+Official guide: https://docs.streamer.bot/get-started/installation/linux
+Follow the current upstream Wine setup instructions, including required
+winetricks dotnet48 and d3dcompiler_47 dependencies. If a v1.0.5+ installation
+crashes around UIAutomationCore.dll, use the fix linked from that official guide.
+
+Import Main Package/StreamFolk_5.0_Main_Package_Linux.sb.
+Framework references use the Wine C: path:
+C:\windows\Microsoft.NET\Framework64\v4.0.30319
+Newtonsoft.Json uses .\Newtonsoft.Json.dll from the Streamer.bot directory.
+Attendance Tracker additionally needs System.Net.Http.dll. System.Net.dll and
+System.Text.Json.dll are not required references for these modules.
+
+Compile every Execute C# sub-action inside your Wine installation. Use Find Refs
+if the prefix exposes framework DLLs differently. A Linux filesystem path such
+as /usr/lib/... is not a substitute for the Windows reference inside Wine.
+
+Reports use the Documents directory mapped by the Wine prefix. Check that folder
+if a summary appears missing on the Linux side. This package's Wine application,
+import, Twitch, and Stream Deck behavior has not been exercised in this environment.

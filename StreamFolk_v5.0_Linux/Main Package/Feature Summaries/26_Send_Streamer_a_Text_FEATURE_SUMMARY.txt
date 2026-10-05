@@ -1,0 +1,36 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+SEND STREAMER A TEXT! - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Optionally sends a viewer reward message through an email-to-SMS gateway.
+
+SYSTEM FLOW
+Disabled by default. Includes a message length limit and a cooldown; the cooldown writes only after a successful send. No creator account, password, gateway address, or sound path is included.
+
+TRIGGERS / ENTRY POINT
+Manual / bind your own specific reward as described below.
+
+CONFIGURATION
+Configure SenderGmailAddress, GoogleAppPassword, SmsGatewayAddress, and optional sound path privately, then set SmsEnabled=true, enable the action, and bind your specific reward. Delivery depends on your provider supporting the gateway.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.text.lastSentUtc
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.text.lastSentUtc
+
+SOURCE
+Source Code/26_Send_Streamer_a_Text.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

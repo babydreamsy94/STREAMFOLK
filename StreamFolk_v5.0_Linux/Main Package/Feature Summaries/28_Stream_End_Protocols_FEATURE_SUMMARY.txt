@@ -1,0 +1,47 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+STREAM END PROTOCOLS - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Builds the final stream summary, saves text/JSON, and clears session attendance.
+
+SYSTEM FLOW
+Keeps the existing report fields, gifter details, unique-chatter calculation, category, duration, and attendee-overlap retention. Runs before Archive Completed Stream inside the same action. Email-to-SMS is disabled. ManageChatModes defaults false.
+
+TRIGGERS / ENTRY POINT
+Twitch Stream Offline
+
+CONFIGURATION
+Read the message text and output paths, then enable Stream End Protocols. Set ManageChatModes=true only if you want the original chat-clear/lock behavior. Optional summary SMS credentials belong only in your private installation.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.attendanceHistory
+streamfolk.analytics.bits
+streamfolk.analytics.chatMessagesByUser
+streamfolk.analytics.currentCategory
+streamfolk.analytics.follows
+streamfolk.analytics.raids
+streamfolk.analytics.seenUsers
+streamfolk.analytics.sessionStartLocal
+streamfolk.analytics.subs
+streamfolk.analytics.subsDetailed
+
+GLOBALS WRITTEN (PERSISTED)
+streamfolk.analytics.attendanceSummaryJson
+streamfolk.analytics.finalSummaryJson
+streamfolk.analytics.seenUsers
+
+SOURCE
+Source Code/28_Stream_End_Protocols.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

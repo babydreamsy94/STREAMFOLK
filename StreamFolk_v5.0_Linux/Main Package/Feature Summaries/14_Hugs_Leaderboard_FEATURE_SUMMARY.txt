@@ -1,0 +1,37 @@
+████████    ██████████  ████████    ██████████    ██████    ██      ██  ██████████    ██████    ██          ██      ██
+██              ██      ██      ██  ██          ██      ██  ████  ████  ██          ██      ██  ██          ██    ██  
+████████        ██      ████████    ████████    ██████████  ██  ██  ██  ████████    ██      ██  ██          ██████    
+        ██      ██      ██  ██      ██          ██      ██  ██      ██  ██          ██      ██  ██          ██    ██  
+████████        ██      ██    ██    ██████████  ██      ██  ██      ██  ██            ██████    ██████████  ██      ██
+
+==============================================================================
+HUGS LEADERBOARD - FEATURE SUMMARY
+==============================================================================
+
+PURPOSE
+Displays the Hugs leaderboard.
+
+SYSTEM FLOW
+Reads the persistent Hugs statistics and uses current attendance where required by the leaderboard.
+
+TRIGGERS / ENTRY POINT
+!hboard
+
+CONFIGURATION
+Enable !hboard after reviewing command cooldowns.
+
+GLOBALS READ (PERSISTED)
+streamfolk.analytics.hugStats
+streamfolk.analytics.seenUsers
+
+GLOBALS WRITTEN (PERSISTED)
+None.
+
+SOURCE
+Source Code/14_Hugs_Leaderboard.cs
+
+COMPATIBILITY / CHECK
+Streamer.bot 1.0.7 stable; no alpha/beta methods are required. Compile the
+imported module locally and exercise its configured entry point between streams.
+The release-root verification report records offline checks and remaining native
+application/live-service checks.

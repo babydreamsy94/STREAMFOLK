@@ -1,0 +1,14 @@
+STREAMFOLK v5.0 - LINUX
+==============================================================================
+
+1. Read QUICK_START.md.
+2. Back up Streamer.bot and stop old StreamFolk tracking.
+3. If migrating old globals, follow Upgrade Tools/UPGRADE.md first.
+4. Import Main Package/StreamFolk_5.0_Main_Package_Linux.sb.
+5. Configure, compile, enable Start/End, and test between streams.
+
+Streamer.bot 1.0.7 STABLE. No alpha or beta required.
+Commands and setup-dependent integrations start disabled.
+Do not import both platform packages into one installation.
+
+Built By Streamers. Powered by Community.
