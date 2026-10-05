@@ -1,83 +1,148 @@
-<img width="1920" height="1080" alt="StreamFolk" src="https://github.com/user-attachments/assets/2def0f20-cba3-4a39-8781-887a7eb66a3b" />
+# STREAMFOLK
 
-# STREAMFOLK v5.0
-
-> **Built By Streamers. Powered by Community.**
+> Built By Streamers. Powered by Community.
 >
-> Created by **[babydreamsy](https://www.twitch.tv/babydreamsy)**
+> Created by [babydreamsy](https://www.twitch.tv/babydreamsy).
 
-[![Version](https://img.shields.io/badge/version-5.0.0-856ed6)](https://github.com/babydreamsy94/STREAMFOLK/releases)
-[![Streamer.bot](https://img.shields.io/badge/Streamer.bot-v1.0.7%20stable-01d7fb)](https://streamer.bot/downloads)
-[![Platform](https://img.shields.io/badge/platform-Twitch-9146FF)](https://www.twitch.tv/)
-[![Download](https://img.shields.io/badge/download-100%25%20FREE-2ea44f)](https://github.com/babydreamsy94/STREAMFOLK/releases)
+StreamFolk is a free collection of Streamer.bot actions and C# scripts for Twitch attendance, community interactions, support events, and local stream reports.
 
-StreamFolk is a community-focused Streamer.bot system for Twitch attendance, participation, support tracking, retention, stream summaries, and long-term reports. It is designed to complement Twitch's official analytics rather than replace platform-controlled financial, payout, advertising, or concurrent-viewer data.
+This public release uses **`streamfolk.analytics.*` for every operational global variable**. It is prepared for **Streamer.bot 1.0.7 stable**, verified as the current stable release on October 5, 2026. No alpha or beta is required.
 
-## What's new in v5.0
+## Download and start
 
-- **Present Viewers attendance** can record identifiable quiet attendees without requiring them to chat.
-- **Bot Welcomer is separate from attendance**, so background attendance can remain silent until a viewer reaches First Words.
-- **Community support can confirm attendance while live**, including follows, Bits/Cheers, subscriptions, resubscriptions, gift-sub gifters, gift bombs, and raids.
-- **Gift recipients are not automatically counted as attendees** merely because somebody gifted them a subscription.
-- **Gift-sub reports retain gifter attribution** while counting each actual subscription only once.
-- **JSON-backed analytics are fail-closed** in the audited trackers: malformed persisted data is logged and preserved instead of being overwritten by a fresh empty dictionary.
-- **Hugs, Pats, BONK, stats, and leaderboard parsing is hardened** for Streamer.bot's Starts-With `rawInput` behavior and manual/test-trigger input.
-- **Stream End guards invalid session start data** instead of producing a year-1 duration.
-- **Send Streamer a Text remains disabled by default** and now includes a code-side safety cooldown/refund path in addition to reward-side controls.
-- **Optional Diaper Check is case-insensitive and corruption-safe** when reading `SeenUsers`.
+[Windows quick start](StreamFolk_v5.0_Windows/QUICK_START.md) · [Linux/Wine quick start](StreamFolk_v5.0_Linux/QUICK_START.md) · [Full changelog](CHANGELOG.txt)
 
-See **[AUDIT_FIXES.md](./AUDIT_FIXES.md)** for the independent-audit disposition and **[VERIFICATION_REPORT.md](./VERIFICATION_REPORT.md)** for package verification.
+Get the package from the [StreamFolk GitHub repository](https://github.com/babydreamsy94/STREAMFOLK) or its [Releases page](https://github.com/babydreamsy94/STREAMFOLK/releases).
 
-## Requirements
+Choose **one** platform folder. Each has `START_HERE.txt`, `QUICK_START.md`, platform notes, the main import, readable C# source, feature summaries, optional Diaper Check, and upgrade tools.
 
-- **Streamer.bot v1.0.7 stable**
-- A Twitch broadcaster account connected to Streamer.bot
-- An active internet connection for Twitch/EventSub/API features
-- A backup of your current Streamer.bot setup before importing or overwriting actions
+| Folder | Environment |
+| --- | --- |
+| `StreamFolk_v5.0_Windows` | Streamer.bot 1.0.7 stable on Windows |
+| `StreamFolk_v5.0_Linux` | The same stable application through Wine; Linux support is experimental upstream |
 
-Windows is the primary native target. A separate Linux/Wine build is prepared with Wine-oriented .NET Framework reference paths; Streamer.bot under Wine should still be treated as experimental and tested in the destination prefix.
+The platform packages use the same logic and IDs. Their framework reference paths differ. **Do not import both into one installation.**
 
-## Core features
+## What changed from v4.1 to v5.0
 
-- Attendance Tracker using Present Viewers, First Words, support events, raids, and an optional Attendance Check reward
-- Returning/new attendee summaries and true attendee-overlap retention
-- Chat message, Bits, follow, raid, subscription, gift subscription, gift bomb, and category tracking
-- Stream Start / Stream End protocols and saved per-stream summaries
-- Weekly, monthly, and yearly reports
-- FIRST! tracker, stats, streaks, and milestones
-- Hugs and Pats trackers, personal stats, and leaderboards
-- BITE! and BONK! attendance-aware community commands
-- Stream Deck live stats
-- Broadcaster reset utilities
-- Optional Send Streamer a Text integration
-- Separate optional Diaper Check add-on
+Every operational global now uses `streamfolk.analytics.*`, with a manual preview/copy utility and a 44-key mapping for existing installations. The main package now has 30 actions and 31 C# modules, adding the separate Bot Welcomer and eight-stat Stream Deck feature.
 
-## Attendance model
+The release also includes Present Viewers and support-event attendance, gifter details, a single first-chat welcome route, and automatic connected-broadcaster configuration. The working migrated build's report/GUI data fields remain intact.
 
-`SeenUsers` remains the authoritative current-stream attendance record. StreamFolk attendance means identifiable community presence/activity that Streamer.bot can observe; it is **not** Twitch's concurrent viewer count and cannot identify every anonymous or logged-out viewer.
+The [complete changelog](CHANGELOG.txt) retains the original release history and adds the v5.0 summary and entry above v4.1. Earlier release descriptions remain historical and have not been rewritten.
 
-A viewer can enter attendance through Present Viewers or another supported event and stay counted for that session even if they later disappear from the current viewer list. Bot Welcomer handles visible First Words welcomes separately.
+## What it records
 
-## Audit hardening
+- Cumulative attendance, new/returning attendees, and long-term attendance dates.
+- Logged-in presence reported by Streamer.bot Present Viewers, first-chat participation, optional Attendance Check redemptions, and eligible support-event actors.
+- Chat totals, unique chatters, messages per minute, follows, Bits, raids, subscriptions, resubscriptions, gift subscriptions, and gifter labels.
+- Attendee-overlap retention, category/title, duration, individual stream summaries, and weekly/monthly/yearly reports.
+- FIRST! wins and streaks, Hugs and Pats statistics/leaderboards, and BITE/BONK commands.
+- Eight optional Stream Deck statistics and optional email-to-SMS notifications.
 
-The September 29, 2026 independent v4.1 review was re-checked against the newer v5 source before changes were applied. Findings that were real were fixed; recommendations based on an incorrect `rawInput` assumption were not copied mechanically. The v5 package also fixes the same stripped-input issue in Pats stats/leaderboard that the original audit did not call out.
+Attendance is a cumulative record of identifiable accounts observed during a session. It is not concurrent viewership, and it cannot identify every anonymous or silent viewer. Receiving a gifted subscription does not, by itself, make someone an attendee. A raid records the raider; it cannot enumerate everybody arriving with that raid.
 
-The package verification pass preserves the original v5 action, command, queue, and timer IDs and validates that readable C# copies match the code embedded in the generated Streamer.bot imports.
+## Package contents
 
-## Download
+| Component, per platform | Included |
+| --- | --- |
+| Main package | 30 actions, 16 commands, 2 blocking queues, 1 disabled timer |
+| Main source and feature summaries | 31 C# modules and 31 matching summaries |
+| Optional Diaper Check | 1 action, 1 command, 1 C# module and summary |
+| Optional upgrade tools | 2 manual actions sharing 1 copy-utility source; 44-key mapping |
 
-StreamFolk releases are distributed through **GitHub Releases**:
+Stream End Protocols contains two C# modules: the final-summary workflow, followed by the completed-stream archive. True Retention is integrated into summaries, the archive, period reports, and Stream Deck statistics.
 
-**https://github.com/babydreamsy94/STREAMFOLK/releases**
+## Public defaults
 
-The v5 release package contains Windows and Linux/Wine imports, readable C# source, setup guides, feature summaries, the audit resolution, and verification report.
+- No saved attendance, personal histories, credentials, email/gateway addresses, creator reward bindings, personal sound paths, or configured Stream Deck button IDs are included.
+- Broadcaster identity comes from the connected Twitch broadcaster account. Replace `botname` in the exclusion arrays with your own separate bot login, or remove that entry if unused.
+- All 16 main commands start disabled. Stream Start, Stream End, Send Streamer a Text, Stream Deck Stats, and the Stream Deck timer also start disabled until configured.
+- Both SMS switches default off. The optional Diaper Check action and command start disabled.
+- `ManageChatModes` defaults false in Start and End. Set it true in both only if you want the original automatic unlocking/locking and chat-clear behavior.
+- Reset commands independently verify the connected broadcaster in C#. Report commands are restricted to the broadcaster/trusted moderators; review permissions before enabling them.
+- Public imports contain no auto-run action. The separate copy utility runs only when explicitly invoked.
 
-## Safety and privacy
+## Install
 
-The public package is blank-slate. Do not commit configured email addresses, App Passwords, SMS gateways, phone information, local private paths, channel-point reward IDs, Stream Deck identifiers, or private analytics histories back to the public repository.
+1. Back up the complete Streamer.bot installation and its saved data. Import between streams with Twitch disconnected and existing StreamFolk actions/timers stopped.
+2. If upgrading from old global names, follow `Upgrade Tools/UPGRADE.md` before activating v5.0. A fresh installation skips the copying utility. An installation already using the namespace also skips it.
+3. Import your platform's main `.sb` file using Streamer.bot's Import dialog. Review 30 actions, 16 commands, 2 queues, and the disabled timer. Preserve the supplied command/action/timer links.
+4. Connect the broadcaster and, if used, bot account. Review exclusions, messages, feature summaries, and command permissions.
+5. Enable Present Viewers Live Update in Twitch settings. Bind your channel's optional Attendance Check and FIRST! rewards to the specific actions; no creator reward IDs are shipped.
+6. Open and compile the C# sub-actions. Enable Stream Start and Stream End when their messages/settings are ready, then enable the community commands you want. Optional SMS/Deck/Diaper Check can remain disabled.
+7. Reconnect and test a short stream: Start, attendance, chat, an interaction, and End. Confirm the text/JSON summary and archive before relying on reports live.
 
-Back up Streamer.bot before upgrades and test Stream Start/End, support events, gift handling, attendance, reports, and any optional integrations before the first production stream.
+Existing custom installations should review incoming action IDs and settings in the import preview. Updating a matching action can replace its settings; a separate unmatched older tracker can remain active and double-count. Keep only one active set of trackers. The public package does not erase old globals or uninstall old actions.
 
----
+## Event connections
 
-**Built By Streamers. Powered by Community.**
+Attendance Tracker receives First Words, Present Viewers, Follow, Cheer, Subscription, Resubscription, Gift Subscription, Gift Bomb, and Raid. Connect your optional Attendance Check reward to it separately.
+
+On First Words it records attendance, then calls Bot Welcomer immediately. Bot Welcomer deliberately has no independent First Words trigger; that prevents a duplicate greeting and ensures it reads the recorded attendee.
+
+The individual chat/follow/Bits/raid/sub trackers remain responsible for their own analytics. Attendance ignores anonymous support and gifted-recipient notifications. Support-event attendance checks the broadcaster's live status through Twitch; test-mode events are ignored by the attendance handler.
+
+## Commands
+
+| Command | Purpose |
+| --- | --- |
+| `!bite`, `!bonk` | Attendance-aware interactions |
+| `!hug`, `!hstats`, `!hboard` | Hugs interaction, stats, leaderboard |
+| `!pat`, `!pstats`, `!pboard` | Pats interaction, stats, leaderboard |
+| `!fstats` | FIRST! statistics |
+| `!wreport [date]` | Week containing the date; defaults to the newest archived stream's week |
+| `!mreport [month]` | Current month by default; accepts `previous` or `yyyy-MM` |
+| `!yreport [year]` | Current year by default; accepts `previous` or `yyyy` |
+| `!resetattendance` | Clear only the session roster; broadcaster only |
+| `!resetfirst` | Clear complete FIRST! history; broadcaster only |
+| `!resethugs`, `!resetpats` | Clear the corresponding complete interaction history; broadcaster only |
+
+FIRST! itself is a reward action. Reset Variables is a manual maintenance action with no public command. The optional add-on supplies `!check` separately.
+
+## Reports, retention, and the GUI
+
+Reports use the installing account's Documents folder:
+
+| Output | Location beneath Documents |
+| --- | --- |
+| Stream text summary | `StreamSummaries/Summary_yyyy-MM-dd_HH-mm-ss.txt` |
+| Companion stream JSON | `StreamSummaries/json/Summary_yyyy-MM-dd.json` |
+| Period reports | `StreamSummaries/Weekly Reports`, `Monthly Reports`, `Yearly Reports` |
+
+The date-only companion JSON holds the latest saved summary for that date; timestamped text summaries and archived stream records retain the individual sessions. Wine resolves Documents through its configured prefix.
+
+The report JSON property names and data model remain compatible with the migrated build, including `StreamCategory`, `SubsPerUserDetailed`, nested `Attendance`, and `RetentionRate`. Archived records keep `Category`. Only the globals holding those values changed names; an external GUI that reads globals directly must use the supplied mapping. A file-based GUI does not need a field rename. No standalone GUI application is bundled.
+
+True Retention is the fraction of the previous eligible attendee roster that returns. Period reports compare unique rosters for their respective periods. It is not the ratio of two attendance totals. Preserve the archive for useful comparisons.
+
+## Upgrading and preserving history
+
+`Upgrade Tools/UPGRADE.md` describes previewing and copying the 44 mapped globals. The utility preserves types, copies persisted/temporary stores separately, leaves the old keys intact, skips equal destinations, and stops before any copy if a destination conflicts. It never guesses which history is newer.
+
+All normal operation uses `streamfolk.analytics.*`; there are no legacy-key writes or automatic legacy-key fallbacks. The mapping and manual utility intentionally contain old names. The older monthly archive *format* fallback remains under `streamfolk.analytics.monthlyHistory`.
+
+## Troubleshooting
+
+- **Compilation errors:** use 1.0.7 stable, check the References list with Find Refs, and read your platform notes. Include System/System.Core plus Newtonsoft.Json, and System.Net.Http for Attendance Tracker. System.Net namespaces are supplied by System.dll; an extra System.Net.dll is not required.
+- **No start/end report:** enable the actions, verify their Stream Online/Offline triggers and connected broadcaster, and inspect Action History/logs. End must execute its summary module before its archive module.
+- **Duplicate welcome:** keep only the Attendance Tracker First Words route; remove a manually added independent trigger from Bot Welcomer.
+- **Duplicate counters:** disable the older duplicate tracker/action set. Do not import both platform packages.
+- **Missing quiet attendee:** Present Viewers is an incomplete observable signal. An Attendance Check reward provides a manual fallback.
+- **Interrupted stream:** preserve existing globals/reports before clearing or merging anything. Reset Variables is a manual per-session clear; it does not merge data or recover a lost report.
+- **No Stream Deck output:** configure each Status Indicator ID and enable both the action and timer. Empty IDs intentionally produce no button updates.
+
+## Verification
+
+See `VERIFICATION_REPORT.md` at the release root. All 32 operational modules plus the copy utility compiled against .NET Framework 4.8 reference assemblies with documented CPH test doubles. Simulations passed 1,432 assertions; report model declarations match the working migration.
+
+This package was assembled and checked programmatically. It has not been imported into a native Windows/Wine Streamer.bot instance in this environment, and live Twitch, Stream Deck, pinning, and SMS services were not exercised here. Complete the local import/compile and short-stream check above. Linux/Wine remains experimental according to Streamer.bot.
+
+## Official references
+
+- [Stable release and changelog](https://streamer.bot/changelogs/v1.0.7)
+- [Streamer.bot downloads](https://streamer.bot/downloads)
+- [Import and export](https://docs.streamer.bot/guide/core/import-export)
+- [Linux/Wine installation](https://docs.streamer.bot/get-started/installation/linux)
+- [Connected broadcaster API](https://docs.streamer.bot/api/csharp/methods/twitch/user/twitch-get-broadcaster)
+- [Pinned-message duration API](https://docs.streamer.bot/api/csharp/methods/twitch/chat/twitch-update-pinned-message-duration)
