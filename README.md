@@ -10,7 +10,7 @@ This public release uses **`streamfolk.analytics.*` for every operational global
 
 ## Download and start
 
-[Windows quick start](StreamFolk_v5.0_Windows/QUICK_START.md) · [Linux/Wine quick start](StreamFolk_v5.0_Linux/QUICK_START.md) · [Full changelog](CHANGELOG.txt)
+[Windows quick start](StreamFolk_v5.0_Windows/QUICK_START.md) · [Linux/Wine quick start](StreamFolk_v5.0_Linux/QUICK_START.md) · [Full changelog](CHANGELOG.txt) [OPTIONAL GUI](https://wolfwaredev.me/sfgui/)
 
 Get the package from the [StreamFolk GitHub repository](https://github.com/babydreamsy94/STREAMFOLK) or its [Releases page](https://github.com/babydreamsy94/STREAMFOLK/releases).
 
