@@ -8,6 +8,8 @@ StreamFolk is a free collection of Streamer.bot actions and C# scripts for Twitc
 
 This public release uses **`streamfolk.analytics.*` for every operational global variable**. It is prepared for **Streamer.bot 1.0.7 stable**, verified as the current stable release on October 5, 2026. No alpha or beta is required.
 
+UPDATE: StreamFolk now has an optional GUI! Try it out by clicking the "OPTIONAL GUI" below! (Credit to wolfwaredev for making the GUI 💙)
+
 ## Download and start
 
 [Windows quick start](StreamFolk_v5.0_Windows/QUICK_START.md) · [Linux/Wine quick start](StreamFolk_v5.0_Linux/QUICK_START.md) · [Full changelog](CHANGELOG.txt) · [OPTIONAL GUI](https://wolfwaredev.me/sfgui/)
